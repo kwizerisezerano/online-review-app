@@ -11,7 +11,6 @@ $result = mysqli_query($conn, $sql);
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,7 +48,7 @@ $result = mysqli_query($conn, $sql);
                                 <p><b>ProductType:</b><?php print $product->type;?></p>
                                 <p><b><a style="text-decoration:none;"href="review.php?pid=<?php print $product->productid;?>">Add-Review
                             </a></b>
-                            <b><a style="text-decoration:none;"href="comment.php?pid=<?php print $product->productid;?>">comment
+                            <b><a style="text-decoration:none;"href="comments.php?pid=<?php print $product->productid;?>">comments
                             </a></b>
                         </p>
                             </div>

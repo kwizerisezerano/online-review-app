@@ -49,9 +49,10 @@ $result = mysqli_query($conn, $sql);
             
             <div class="form-group">
                 <label for="">Description</label>
-                <textarea id="review" name="desc" rows="4" cols="50"class="form-control" required>
+                <input type="text" id="review" name="desc" style="height:200;"class="form-control" required placeholder="kindly mention who commented  for better recognation">
                 </textarea>
             </div>
+
            
             <div class="form-group mt-2">
                 <button type="submit" class="btn btn-primary w-100">Add Review</button>

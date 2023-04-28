@@ -54,7 +54,7 @@ $result = mysqli_query($conn, $sql);
                     <?php
                 $conn = mysqli_connect('localhost', 'root', '', 'review');
                 if($conn){
-                    $select = mysqli_query($conn,"SELECT * FROM `review`");
+                    $select = mysqli_query($conn,"SELECT * FROM `review` where productid='$id'");
                     while($row=mysqli_fetch_array($select)){
                         echo"<option value='".$row['description']."'>".$row['description']."</option>";
                     }
@@ -62,23 +62,9 @@ $result = mysqli_query($conn, $sql);
                 ?>
                 </select>
             </div>
-            <div class="form-group">
-                
-                <label for="">commented by:</label>
-                <select name="description" id="" class="form-control" required>
-                    <?php
-                $conn = mysqli_connect('localhost', 'root', '', 'review');
-                if($conn){
-                    $select = mysqli_query($conn,"SELECT * FROM `review`,`users` where review.userid=users.userid");
-                    while($row=mysqli_fetch_array($select)){
-                        echo"<option value='".$row['userid']."'>".$row['username']."</option>";
-                    }
-                }
-                ?>
-                </select>
-            </div>
+           
             <div class="form-group mt-2">
-                <button type="submit" class="btn btn-primary w-100">endReview</button>
+                <button  class="btn btn-primary w-100"><a href="all_products.php"style="text-decoration:none;color:white;" >end view</a></button>
             </div>
             <div class="form-group mt-2">
                 <!-- <p>
