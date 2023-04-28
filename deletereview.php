@@ -2,7 +2,7 @@
 session_start();
 $id=$_GET['pid'];
 $conn = mysqli_connect('localhost', 'root', '', 'review');
-$sql = "SELECT *FROM `review`,`product` where product.productid='$id'";
+$sql = "SELECT *FROM `product`,`users` where product.productid='$id' and  users.username='$_SESSION[user]'";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -33,22 +33,30 @@ $result = mysqli_query($conn, $sql);
                     ?>
 
         <form action="" method="post" >
+        <div class="form-group">
+                <label for="">userID</label>
+                <select name="userid" id="" class="form-control" required>
+                <option value="<?php print $product->userid;?>"><?php print $product->username;?></option>
+                </select>
+            </div>
             <div class="form-group">
                 
                 <label for="">productID</label>
-                <select name="productid" id="" class="form-control">
-                    <option value="<?php print $product->reviewid;?>"><?php print $product->description;?></option>
+                <select name="productid" id="" class="form-control" required>
+                    <option value="<?php print $product->productid;?>"><?php print $product->name;?></option>
                 </select>
             </div>
+            
+            
            
             <div class="form-group mt-2">
-                <button type="submit" class="btn btn-primary w-100">Remove product</button>
+                <button type="submit" class="btn btn-primary w-100">remove Review</button>
             </div>
             <div class="form-group mt-2">
-                <p>
+                <!-- <p>
                     <center><b> <a href="comments.php"style="text-decoration:none;">View reviews</a></b> </center> 
                     <center> <b> <a href="all_products.php"style="text-decoration:none;">View available products</a></b> </center> 
-                </p>
+                </p> -->
             </div>
 
         </form>
@@ -63,8 +71,20 @@ $result = mysqli_query($conn, $sql);
 <?php
 $conn=mysqli_connect("localhost","root","","review");
 if($_POST){
+    $userid=$_POST['userid'];
     $productid=$_POST['productid'];
-    $delete=mysqli_query($conn,"delete from review where productid='$productid'");
+    $desc=$_POST['desc'];
+    $insert=mysqli_query($conn,"delete from `review`where productid='$productid' and  userid='$_SESSION[user]'");
+    if($insert){
+        echo "<script>alert('review  is successfully added to  product');</script>";
+        header("location:all_products.php");
+    }
+    else{
+        echo "<script>alert('no review added');</script>";
+    }
+}
+else{
+    echo "<script>alert('please try again');</script>";
 }
 
 ?>

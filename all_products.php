@@ -50,6 +50,8 @@ $result = mysqli_query($conn, $sql);
                             </a></b>
                             <b><a style="text-decoration:none;"href="comments.php?pid=<?php print $product->productid;?>">comments
                             </a></b>
+                            <b><a style="text-decoration:none;"href="deletereview.php?pid=<?php print $product->productid;?>">Delete review
+                            </a></b>
                         </p>
                             </div>
                         </div>

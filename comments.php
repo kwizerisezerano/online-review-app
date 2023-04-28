@@ -23,7 +23,7 @@ $result = mysqli_query($conn, $sql);
     <!-- header -->
     <div class="bg-white shadow rounded p-3">
     <h1 style="color:blue;font-family:Algerian;">ONLINE REVIEW PLATFORM</h1>
-        <h4  style="color:darkblue;font-family:helvetica; "><center>Add your review<center></h4>
+        <h4  style="color:darkblue;font-family:helvetica; "><center>view all review<center></h4>
         
         <?php
             if (mysqli_num_rows($result) < 1) {
