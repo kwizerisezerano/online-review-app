@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $sql);
                                 <p><b>ProductType:</b><?php print $product->type;?></p>
                                 <p><b><a style="text-decoration:none;"href="review.php?pid=<?php print $product->productid;?>">Add-Review
                             </a></b>
-                            <b><a style="text-decoration:none;"href="comments.php?pid=<?php print $product->productid;?>">comments
+                            <b><a style="text-decoration:none;"href="comments.php?pid=<?php print $product->productid;?>">reviews
                             </a></b>
                             <b><a style="text-decoration:none;"href="deletereview.php?pid=<?php print $product->productid;?>">Delete review
                             </a></b>

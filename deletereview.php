@@ -2,7 +2,7 @@
 session_start();
 $id=$_GET['pid'];
 $conn = mysqli_connect('localhost', 'root', '', 'review');
-$sql = "SELECT *FROM `product`,`users` where product.productid='$id' and  users.username='$_SESSION[user]'";
+$sql = "SELECT *FROM `review`,`users` where review.productid='$id' and  users.username='$_SESSION[user]'" ;
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $sql);
                 $product = mysqli_fetch_object($result);
                     ?>
 
-        <form action="" method="post" >
+        <form action="" method="get" >
         <div class="form-group">
                 <label for="">userID</label>
                 <select name="userid" id="" class="form-control" required>
@@ -42,12 +42,12 @@ $result = mysqli_query($conn, $sql);
             <div class="form-group">
                 
                 <label for="">productID</label>
-                <select name="productid" id="" class="form-control" required>
-                    <option value="<?php print $product->productid;?>"><?php print $product->name;?></option>
+                <select name="pid" id="" class="form-control" required>
+                    <option value="<?php print $product->productid;?>"><?php print $product->productid;?></option>
                 </select>
             </div>
             
-            
+           
            
             <div class="form-group mt-2">
                 <button type="submit" class="btn btn-primary w-100">remove Review</button>
@@ -71,20 +71,20 @@ $result = mysqli_query($conn, $sql);
 <?php
 $conn=mysqli_connect("localhost","root","","review");
 if($_POST){
-    $userid=$_POST['userid'];
-    $productid=$_POST['productid'];
-    $desc=$_POST['desc'];
-    $insert=mysqli_query($conn,"delete from `review`where productid='$productid' and  userid='$_SESSION[user]'");
+    $userid=$_GETT['userid'];
+    $productid=$_GET['pid'];
+    // $desc=$_POST['desc'];
+    $insert=mysqli_query($conn,"DELETE FROM `review` WHERE productid='$productid' AND userid='$userid'");
     if($insert){
         echo "<script>alert('review  is successfully added to  product');</script>";
-        header("location:all_products.php");
+        // header("location:all_products.php");
     }
     else{
         echo "<script>alert('no review added');</script>";
     }
 }
 else{
-    echo "<script>alert('please try again');</script>";
+    echo "<script>alert('try again');</script>";
 }
 
 ?>
