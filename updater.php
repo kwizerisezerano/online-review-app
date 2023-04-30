@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +28,7 @@
                     <?php
                 $conn=mysqli_connect("localhost","root","","review");
                 if($conn){
-                    $select = mysqli_query($conn,"SELECT * FROM `review`");
+                    $select = mysqli_query($conn,"SELECT * FROM `review` where username='$_SESSION[user]'");
                     while($row=mysqli_fetch_array($select)){
                         echo"<option value='".$row['reviewid']."'>".$row['reviewid']."</option>";
                     }
@@ -68,7 +72,7 @@ if($_POST){
        $insert=mysqli_query($conn,"update review set description='$desc',time='$time' where reviewid='$userid'");
     if($insert){
         echo "<script>alert('review  is successfully added to  product');</script>";
-        header("location:all_products.php");
+        header("location:comments.php");
     }
     else{
         echo "<script>alert('no review added');</script>";

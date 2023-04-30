@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +18,7 @@
     <!-- header -->
     <div class="bg-white shadow rounded p-3">
     <h1 style="color:blue;font-family:Algerian;">ONLINE REVIEW PLATFORM</h1>
-        <h4  style="color:darkblue;font-family:helvetica; "><center>Add your review<center></h4>
+        <h4  style="color:darkblue;font-family:helvetica; "><center>modify your review<center></h4>
         
         
         <form action="" method="post" >
@@ -24,7 +28,7 @@
                     <?php
                 $conn=mysqli_connect("localhost","root","","review");
                 if($conn){
-                    $select = mysqli_query($conn,"SELECT * FROM `review`");
+                    $select = mysqli_query($conn,"SELECT * FROM `review` where username='$_SESSION[user]'");
                     while($row=mysqli_fetch_array($select)){
                         echo"<option value='".$row['reviewid']."'>".$row['reviewid']."</option>";
                     }
@@ -33,18 +37,10 @@
                 </select>
             </div>          
             
-            <div class="form-group">
-                <label for="">Review Description</label>
-                <textarea name="desc" id="" class="form-control" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="">Time</label>
-                <input type="datetime-local" name="time" id="" class="form-control" required placeholder="">
-            </div>
-           
+            
            
             <div class="form-group mt-2">
-                <button type="submit" class="btn btn-primary w-100">Add Review</button>
+                <button type="submit" class="btn btn-primary w-100">Remove Review</button>
             </div>
             <div class="form-group mt-2">
                 <p>
@@ -63,12 +59,11 @@
 $conn=mysqli_connect("localhost","root","","review");
 if($_POST){
     $userid=$_POST['reviewid'];
-    $desc=$_POST['desc'];
-    $time=$_POST['time'];
-       $insert=mysqli_query($conn,"update review set description='$desc',time='$time' where reviewid='$userid'");
+    
+       $insert=mysqli_query($conn,"delete from review  where reviewid='$userid'");
     if($insert){
         echo "<script>alert('review  is successfully added to  product');</script>";
-        header("location:all_products.php");
+        header("location:comments.php");
     }
     else{
         echo "<script>alert('no review added');</script>";
