@@ -2,7 +2,7 @@
 session_start();
 $id=$_GET['pid'];
 $conn = mysqli_connect('localhost', 'root', '', 'review');
-$sql = "SELECT *FROM `product`,`users` where product.productid='$id' and  users.username='$_SESSION[user]'";
+$sql = "SELECT *FROM `product`,`users` where product.productid='$id' AND users.username='$_SESSION[user]'";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -34,11 +34,12 @@ $result = mysqli_query($conn, $sql);
 
         <form action="" method="post" >
         <div class="form-group">
-                <label for="">userID</label>
+                <label for="">Reviewed by</label>
                 <select name="userid" id="" class="form-control" required>
                 <option value="<?php print $product->userid;?>"><?php print $product->username;?></option>
                 </select>
             </div>
+        
             <div class="form-group">
                 
                 <label for="">productID</label>
@@ -47,10 +48,14 @@ $result = mysqli_query($conn, $sql);
                 </select>
             </div>
             
+            
             <div class="form-group">
-                <label for="">Description</label>
-                <input type="text" id="review" name="desc" style="height:200;"class="form-control" required placeholder="kindly mention who commented  for better recognation">
-                </textarea>
+                <label for="">Review Description</label>
+                <textarea name="desc" id="" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Time</label>
+                <input type="datetime-local" name="time" id="" class="form-control" required placeholder="">
             </div>
 
            
@@ -79,7 +84,8 @@ if($_POST){
     $userid=$_POST['userid'];
     $productid=$_POST['productid'];
     $desc=$_POST['desc'];
-    $insert=mysqli_query($conn,"INSERT INTO `review`(`userid`, `productid`, `description`) VALUES ('$userid','$productid','$desc')");
+    $time=$_POST['time'];
+    $insert=mysqli_query($conn,"INSERT INTO `review`( `username`, `productid`, `description`, `time`) VALUES ('$userid','$productid','$desc','$time')");
     if($insert){
         echo "<script>alert('review  is successfully added to  product');</script>";
         header("location:all_products.php");
