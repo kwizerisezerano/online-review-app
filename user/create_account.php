@@ -19,12 +19,12 @@
         <h4  style="color:darkblue;font-family:helvetica; "><center>Register your account<center></h4>
         <form action="" method="post" >
             <div class="form-group">
-            <i class='fas fa-user' style="color:blue;"></i>
+            <i class='fa fa-user' style="color:blue;"></i>
                 <label for="">Username</label>
                 <input type="text" name="username" id="" class="form-control" required>
             </div>
             <div class="form-group">
-            <i class='fas fa-angle-double-down' style="color:blue;"></i>
+            <i class='fa fa-angle-double-down'></i>
                 <label for="">Status </label>
                 <select name="status" class="form-control">
                     <OPtion value="seller">Seller</OPtion>
@@ -32,7 +32,7 @@
                 </select>
             </div>
             <div class="form-group" class="form-control">
-            <i class='fas fa-key' style="color:blue;"></i>
+            <i class='fa fa-key'></i>
                 <label for="">Password</label>
                 <input type="password" name="password" id="" class="form-control" required>
             </div>
