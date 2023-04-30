@@ -17,6 +17,14 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
+    <style>
+        body{
+            background-image: url("b.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
 </head>
 
 <body class="d-flex justify-content-center align-items-center bg-light" style="height:100vh">

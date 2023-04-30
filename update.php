@@ -1,4 +1,5 @@
 <?php
+session_start();
 $conn = mysqli_connect("localhost", "root", "", "review");
 if ($_POST) {
     $id = $_POST['id'];
@@ -42,6 +43,14 @@ else {
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
+    <style>
+        body{
+            background-image: url("b.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
 </head>
 
 <body class="bg-light  container py-5" style="height:100vh">
@@ -60,9 +69,19 @@ else {
         <h4  style="color:darkblue;font-family:helvetica; "><center>Modify product properties<center></h4>
         <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
-                <label for="">ProductID</label>
-                <input type="number" name="id" id="" class="form-control" required>
-            </div>
+        <label for="">ProductID</label>
+                <select name="id" id="" class="form-control" required>
+                    <?php
+                $conn=mysqli_connect("localhost","root","","review");
+                if($conn){
+                    $select = mysqli_query($conn,"SELECT * FROM `product` where seller='$_SESSION[user]'");
+                    while($row=mysqli_fetch_array($select)){
+                        echo"<option value='".$row['productid']."'>".$row['name']."</option>";
+                    }
+                }
+                ?>
+                </select>
+            </div>         
             <div class="form-group">
                 <label for="">Product name</label>
                 <input type="text" name="pname" id="" class="form-control" required>

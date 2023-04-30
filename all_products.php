@@ -18,13 +18,25 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
+    <style>
+        body{
+            background-image: url("b.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
 </head>
 
 <body class="bg-light" style="height:100vh">
     <div class="container my-4">
         <div class="bg-white p-4 rounded shadow border">
             <div class="menu" style="background-color:blue;">
-            <b><p style="color:white;"><center><a href="logout.php"style="text-decoration:none;color:white;padding:500px;">Logout</a> <a href="comments.php"style="text-decoration:none;color:white;" >view reviews</a><center></p> </b>
+            
+            <b><p style="color:white;"><center>
+                <a href="logout.php"style="text-decoration:none;color:white;padding: 100px;">Logout</a> 
+                <a href="Search.php"style="text-decoration:none;color:white;padding:300px;">Search product</a> 
+        </p> </b>
 </div>
             <h1>All products</h1>
             <?php
@@ -46,11 +58,13 @@ $result = mysqli_query($conn, $sql);
                                 <p><b>ProductMarc:</b><?php print $product->marc;?></p>
                                 <p><b>ProductSize:</b><?php print $product->size;?></p>
                                 <p><b>ProductType:</b><?php print $product->type;?></p>
-                                <p><b><a style="text-decoration:none;"href="review.php?pid=<?php print $product->productid;?>">Add-Review
+                                <p><b>SellerName:</b><?php print $product->seller;?></p>
+                                <p><b><a style="text-decoration:none; "href="review.php?pid=<?php print $product->productid;?>">Add-Review
                             </a></b>
-                            <b><a style="text-decoration:none;"href="comments.php?pid=<?php print $product->productid;?>">reviews
+                            <b><a style="text-decoration:none;padding:30px"href="comments.php?pid=<?php print $product->productid;?>">reviews
                             </a></b>
-                            <b><a style="text-decoration:none;"href="deletereview.php?pid=<?php print $product->productid;?>">Delete review
+        
+                            <b><a style="text-decoration:none;padding:30px"href="search.php?pid=<?php print $product->productid;?>">Search products
                             </a></b>
                         </p>
                             </div>

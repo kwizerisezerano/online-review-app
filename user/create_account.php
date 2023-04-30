@@ -7,13 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="..\assets\css\bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
-   
-    
-    <script src="..\assets\js\bootstrap.bundle.js"></script>
+   <script src="..\assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
+    <style>
+        body{
+            background-image: url("b.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
 </head>
 
-<body class="d-flex justify-content-center align-items-center" style="height:100vh;background-color:skyblue;">
+<body class="d-flex justify-content-center align-items-center" style="height:100vh;">
     <!-- header -->
     <div class="bg-white shadow rounded p-3">
         <h1 style="color:blue;font-family:Algerian;">ONLINE REVIEW PLATFORM</h1>
@@ -27,7 +33,7 @@
             <div class="form-group">
             <i class='fas fa-angle-double-down' style="color:blue;"></i>
                 <label for="">Status </label>
-                <select name="status" class="form-control">
+                <select name="status" class="form-control" required>
                     <OPtion value="seller">Seller</OPtion>
                     <OPtion value="buyer">Buyer</OPtion>
                 </select>

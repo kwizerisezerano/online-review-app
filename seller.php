@@ -5,7 +5,7 @@ if ($_POST) {
     $pmarc = $_POST['pmarc'];
     $psize = $_POST['psize'];
     $ptype = $_POST['ptype'];
-
+    $seller = $_POST['seller'];
     if (isset($_FILES['pfile'])) {
         $image = $_FILES['pfile'];
         $pimage = $image['name'];
@@ -13,7 +13,7 @@ if ($_POST) {
         $target_dir = "uploads/" . $pimage;
 
         if (move_uploaded_file($tmp, $target_dir)) {
-            $insert = mysqli_query($conn, "INSERT INTO `product`(`name`, `marc`, `size`, `type`, `image`) VALUES ('$pname','$pmarc','$psize','$ptype','$pimage')");
+            $insert = mysqli_query($conn, "INSERT INTO `product`(`name`, `marc`, `size`, `type`, `image`,`seller`) VALUES ('$pname','$pmarc','$psize','$ptype','$pimage','$seller')");
             echo "<script>alert('product is successfully inserted');</script>";
         } else {
             echo "<script>alert('product is successfully inserted');</script>";
@@ -36,6 +36,14 @@ if ($_POST) {
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
+    <style>
+        body{
+            background-image: url("b.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
 </head>
 
 <body class="bg-light  container py-5" style="height:100vh">
@@ -73,7 +81,21 @@ if ($_POST) {
                 <label for="">Product image</label>
                 <input type="file" name="pfile" id="" accept="image/*" class="form-control" required>
             </div>
-
+            <div class="form-group">
+                
+                <label for="">Seller</label>
+                <select name="seller" id="" class="form-control" required>
+                    <?php
+                $conn=mysqli_connect("localhost","root","","review");
+                if($conn){
+                    $select = mysqli_query($conn,"SELECT * FROM `users` where status='seller' ");
+                    while($row=mysqli_fetch_array($select)){
+                        echo"<option value='".$row['username']."'>".$row['username']."</option>";
+                    }
+                }
+                ?>
+                </select>
+            </div>
             <div class="form-group mt-2">
                 <button type="submit" class="btn btn-primary w-100">Add new product</button>
             </div>

@@ -2,7 +2,7 @@
 session_start();
 $id=$_GET['pid'];
 $conn = mysqli_connect('localhost', 'root', '', 'review');
-$sql = "SELECT *FROM `product` where productid='$id' ";
+$sql = "SELECT *FROM `product`,`users` where product.productid='$id' AND users.username='$_SESSION[user]'";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -17,6 +17,14 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
+    <style>
+        body{
+            background-image: url("b.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
 </head>
 
 <body class="d-flex justify-content-center align-items-center bg-light" style="height:100vh">
@@ -33,16 +41,40 @@ $result = mysqli_query($conn, $sql);
                     ?>
 
         <form action="" method="post" >
+        <div class="form-group">
+                <label for="">Reviewed by</label>
+                <select name="userid" id="" class="form-control" required>
+                <option value="<?php print $product->username?>"><?php print $product->username;?></option>
+                </select>
+            </div>
+        
             <div class="form-group">
                 
                 <label for="">productID</label>
-                <select name="productid" id="" class="form-control">
+                <select name="productid" id="" class="form-control" required>
                     <option value="<?php print $product->productid;?>"><?php print $product->name;?></option>
+                </select>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="">Review Description</label>
+                <textarea name="desc" id="" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Time</label>
+                <input type="datetime-local" name="time" id="" class="form-control" required placeholder="">
+            </div>
+            <div class="form-group">
+                
+                <label for="">User status</label>
+                <select name="status" id="" class="form-control" required>
+                    <option value="<?php print $product->status;?>"><?php print $product->status;?></option>
                 </select>
             </div>
            
             <div class="form-group mt-2">
-                <button type="submit" class="btn btn-primary w-100">Remove product</button>
+                <button type="submit" class="btn btn-primary w-100">Add Review</button>
             </div>
             <div class="form-group mt-2">
                 <p>
@@ -63,13 +95,18 @@ $result = mysqli_query($conn, $sql);
 <?php
 $conn=mysqli_connect("localhost","root","","review");
 if($_POST){
+    $userid=$_POST['userid'];
     $productid=$_POST['productid'];
-    $delete=mysqli_query($conn,"delete from product where productid='$productid'");
-    if($delete){
-        echo "<script>alert('product is successfully removed from available product');</script>";
+    $desc=$_POST['desc'];
+    $time=$_POST['time'];
+    $status=$_POST['status'];
+    $insert=mysqli_query($conn,"INSERT INTO `review`( `username`, `productid`, `description`, `time`,`status`) VALUES ('$userid','$productid','$desc','$time','$status')");
+    if($insert){
+        echo "<script>alert('review  is successfully added to  product');</script>";
+        header("location:all_products.php");
     }
     else{
-        echo "<script>alert('product is still in  available product');</script>";
+        echo "<script>alert('no review added');</script>";
     }
 }
 else{

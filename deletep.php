@@ -1,21 +1,19 @@
 <?php
-$conn=mysqli_connect("localhost","root","","review");
-if($_POST){
-    $productid=$_POST['id'];
-    $select=mysqli_query($conn,"select*from product  where productid='$productid'");
-    $row=mysqli_fetch_array($select);
-    if($row['productid']){
-        $delete=mysqli_query($conn,"delete from product where productid='$productid'");
-        echo "<script>alert('product is successfully removed from available product');</script>";
-    }
-    else{
-        echo "<script>alert('npproduct found');</script>";
-    }
-}
-else{
-    echo "<script>alert('please try again');</script>";
-}
-
+session_start();
+$conn = mysqli_connect("localhost", "root", "", "review");
+if ($_POST) {
+  $id=$_POST['id'];
+                $update = mysqli_query($conn, "DELETE FROM `product` WHERE   productid='$id'");
+                if($update){
+                    echo "<script>alert('product is removed');</script>";
+                }
+                else {
+                    echo "<script>alert('product is not removed');</script>";
+            } 
+                
+            }
+           
+        
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +26,14 @@ else{
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
+    <style>
+        body{
+            background-image: url("b.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
 </head>
 
 <body class="bg-light  container py-5" style="height:100vh">
@@ -41,9 +47,9 @@ else{
             <a href="seller.php"style="text-decoration:none;color:white;padding:55px;" >add new products</a>
             <center>
             </p> </b>
-</div>
+</div> 
     <h1 style="color:blue;font-family:Algerian;"><center>ONLINE REVIEW PLATFORM</center></h1>
-        <h4  style="color:darkblue;font-family:helvetica; "><center>Remove products<center></h4>
+        <h4  style="color:darkblue;font-family:helvetica; "><center>Modify product properties<center></h4>
         <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
         <label for="">ProductID</label>
@@ -51,15 +57,15 @@ else{
                     <?php
                 $conn=mysqli_connect("localhost","root","","review");
                 if($conn){
-                    $select = mysqli_query($conn,"SELECT * FROM `product`");
+                    $select = mysqli_query($conn,"SELECT * FROM `product` where seller='$_SESSION[user]'");
                     while($row=mysqli_fetch_array($select)){
                         echo"<option value='".$row['productid']."'>".$row['name']."</option>";
                     }
                 }
                 ?>
                 </select>
-            </div>
-
+            </div>         
+            
             <div class="form-group mt-2">
                 <button type="submit" class="btn btn-primary w-100">Remove Product</button>
             </div>

@@ -35,9 +35,17 @@ if($_POST){
 <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
         <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
+    <style>
+        body{
+            background-image: url("b.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
 </head>
 
-<body class="d-flex justify-content-center align-items-center" style="height:100vh;background-color:skyblue;">
+<body class="d-flex justify-content-center align-items-center" style="height:100vh;">
     <!-- header -->
     <div class="bg-white shadow rounded p-3">
     <h1 style="color:blue;font-family:Algerian;">ONLINE REVIEW PLATFORM</h1>
