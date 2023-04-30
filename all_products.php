@@ -59,6 +59,7 @@ $result = mysqli_query($conn, $sql);
                                 <p><b>ProductSize:</b><?php print $product->size;?></p>
                                 <p><b>ProductType:</b><?php print $product->type;?></p>
                                 <p><b>SellerName:</b><?php print $product->seller;?></p>
+                                <p><b>Product Price:</b><?php print $product->price;?></p>
                                 <p><b><a style="text-decoration:none; "href="review.php?pid=<?php print $product->productid;?>">Add-Review
                             </a></b>
                             <b><a style="text-decoration:none;padding:30px"href="comments.php?pid=<?php print $product->productid;?>">reviews

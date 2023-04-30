@@ -6,6 +6,7 @@ if ($_POST) {
     $psize = $_POST['psize'];
     $ptype = $_POST['ptype'];
     $seller = $_POST['seller'];
+    $price = $_POST['price'];
     if (isset($_FILES['pfile'])) {
         $image = $_FILES['pfile'];
         $pimage = $image['name'];
@@ -13,7 +14,7 @@ if ($_POST) {
         $target_dir = "uploads/" . $pimage;
 
         if (move_uploaded_file($tmp, $target_dir)) {
-            $insert = mysqli_query($conn, "INSERT INTO `product`(`name`, `marc`, `size`, `type`, `image`,`seller`) VALUES ('$pname','$pmarc','$psize','$ptype','$pimage','$seller')");
+            $insert = mysqli_query($conn, "INSERT INTO `product`(`name`, `marc`, `size`, `type`, `image`,`seller`,`price`) VALUES ('$pname','$pmarc','$psize','$ptype','$pimage','$seller','$price')");
             echo "<script>alert('product is successfully inserted');</script>";
         } else {
             echo "<script>alert('product is successfully inserted');</script>";
@@ -95,6 +96,10 @@ if ($_POST) {
                 }
                 ?>
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="">Product Price</label>
+                <input type="text" name="price" id="" class="form-control" required placeholder="$ followed by amount">
             </div>
             <div class="form-group mt-2">
                 <button type="submit" class="btn btn-primary w-100">Add new product</button>
