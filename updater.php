@@ -14,7 +14,7 @@
     <!-- header -->
     <div class="bg-white shadow rounded p-3">
     <h1 style="color:blue;font-family:Algerian;">ONLINE REVIEW PLATFORM</h1>
-        <h4  style="color:darkblue;font-family:helvetica; "><center>Add your review<center></h4>
+        <h4  style="color:darkblue;font-family:helvetica; "><center>modify your review<center></h4>
         
         
         <form action="" method="post" >
@@ -44,7 +44,7 @@
            
            
             <div class="form-group mt-2">
-                <button type="submit" class="btn btn-primary w-100">Add Review</button>
+                <button type="submit" class="btn btn-primary w-100">Modify Review</button>
             </div>
             <div class="form-group mt-2">
                 <p>
