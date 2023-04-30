@@ -63,10 +63,10 @@ $result = mysqli_query($conn, $sql);
                 <button type="submit" class="btn btn-primary w-100">Add Review</button>
             </div>
             <div class="form-group mt-2">
-                <!-- <p>
+                <p>
                     <center><b> <a href="comments.php"style="text-decoration:none;">View reviews</a></b> </center> 
                     <center> <b> <a href="all_products.php"style="text-decoration:none;">View available products</a></b> </center> 
-                </p> -->
+                </p>
             </div>
 
         </form>
