@@ -33,8 +33,7 @@ if($_POST){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
 <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
-    <!-- <script src='fontawesome-free-6.4.0-web\js\fontawesome.min.js' crossorigin='anonymous'></script> -->
-    <script src="assets\js\bootstrap.bundle.js"></script>
+        <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
 </head>
 
@@ -50,13 +49,13 @@ if($_POST){
 
                 <label for="">Username</label>
                 
-                <input type="text" name="username" class="form-control " required pattern="[^\d]+"  placeholder="Username">
+                <input type="text" name="username" class="form-control " required   placeholder="Username">
             </div>
             <div class="form-group">
                 <i class='fas fa-key' style="color:blue;"></i>
                 <label for="">Password</label>
                 
-                <input type="password" name="password" class="form-control" required  pattern="">
+                <input type="password" name="password" class="form-control" required  >
             </div>
             <div class="form-group mt-2">
                 <button type="submit" class="btn btn-primary w-100">LOGIN</button>
