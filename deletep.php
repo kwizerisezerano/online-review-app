@@ -46,8 +46,18 @@ else{
         <h4  style="color:darkblue;font-family:helvetica; "><center>Remove products<center></h4>
         <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
-                <label for="">ProductID</label>
-                <input type="number" name="id" id="" class="form-control" required>
+        <label for="">ProductID</label>
+                <select name="id" id="" class="form-control" required>
+                    <?php
+                $conn=mysqli_connect("localhost","root","","review");
+                if($conn){
+                    $select = mysqli_query($conn,"SELECT * FROM `product`");
+                    while($row=mysqli_fetch_array($select)){
+                        echo"<option value='".$row['productid']."'>".$row['name']."</option>";
+                    }
+                }
+                ?>
+                </select>
             </div>
 
             <div class="form-group mt-2">

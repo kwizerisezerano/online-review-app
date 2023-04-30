@@ -32,6 +32,8 @@ if($_POST){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
+<link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
+    <!-- <script src='fontawesome-free-6.4.0-web\js\fontawesome.min.js' crossorigin='anonymous'></script> -->
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
 </head>
@@ -41,15 +43,20 @@ if($_POST){
     <div class="bg-white shadow rounded p-3">
     <h1 style="color:blue;font-family:Algerian;">ONLINE REVIEW PLATFORM</h1>
         <h4  style="color:darkblue;font-family:helvetica; "><center>Login with valid Credentials<center></h4>
-    
+   
         <form action="" method="post" >
-            <div class="form-group">
+            <div class="form-group" >
+                <i class='fas fa-user' style="color:blue;"></i>
+
                 <label for="">Username</label>
-                <input type="text" name="username" id="" class="form-control" required>
+                
+                <input type="text" name="username" class="form-control " required pattern="[^\d]+"  placeholder="Username">
             </div>
             <div class="form-group">
+                <i class='fas fa-key' style="color:blue;"></i>
                 <label for="">Password</label>
-                <input type="password" name="password" id="" class="form-control" required>
+                
+                <input type="password" name="password" class="form-control" required  pattern="">
             </div>
             <div class="form-group mt-2">
                 <button type="submit" class="btn btn-primary w-100">LOGIN</button>

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="..\assets\css\bootstrap.min.css">
+    
     <script src="..\assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
 </head>
@@ -17,10 +19,12 @@
         <h4  style="color:darkblue;font-family:helvetica; "><center>Register your account<center></h4>
         <form action="" method="post" >
             <div class="form-group">
+            <i class='fas fa-user' style="color:blue;"></i>
                 <label for="">Username</label>
                 <input type="text" name="username" id="" class="form-control" required>
             </div>
             <div class="form-group">
+            <i class='fas fa-angle-double-down' style="color:blue;"></i>
                 <label for="">Status </label>
                 <select name="status" class="form-control">
                     <OPtion value="seller">Seller</OPtion>
@@ -28,6 +32,7 @@
                 </select>
             </div>
             <div class="form-group" class="form-control">
+            <i class='fas fa-key' style="color:blue;"></i>
                 <label for="">Password</label>
                 <input type="password" name="password" id="" class="form-control" required>
             </div>
