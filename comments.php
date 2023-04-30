@@ -19,16 +19,39 @@
    
         <form action="" method="post" >
             <div class="form-group" >
-            <table border="0" width="1000" height="300" bgcolor="white">
+            <table border="0" width="1000" height="300" bgcolor="white" >
         <tr>
     <th>Reviewid</th>
     <th>REviwed By</th>
     <th>productid</th>
-    <th>REview description</th>
+    <th>description</th>
     <th>Reviewed time </th>
+    <th>User status</th>
+    <th>Manage reviews</th>
    </tr>
+   <?php
+                $conn=mysqli_connect("localhost","root","","review");
+                if($conn){
+                    $select = mysqli_query($conn,"SELECT * FROM `review`");
+                    while($row=mysqli_fetch_object($select)){
+                        echo"<tr>
+                        <td>$row->reviewid</td>
+                        <td>$row->username</td>
+                        <td>$row->productid</td>
+                        <td>$row->description</td>
+                        <td>$row->time</td>
+                        <td>$row->status</td>
+                        <td><b><a style='text-decoration:none;'href='all_products.php'>Products</a></b></td>
+                        <td><b><a style='text-decoration:none;' href='updater.php'>Update</a></b></td>
+                        <td><b><a style='text-decoration:none;'href='deleter.php'>Delete</a></b></td>
+                        <td><b><a style='text-decoration:none;'href='review.php'>Add review</a></b></td>
+                         </tr>";
+                        
+                    }
+                   
+                }
+                echo "</table>";
+                ?>
 </div>
-            
-    
 </body>
 </html>
