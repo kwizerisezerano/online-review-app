@@ -44,7 +44,7 @@
                         <td><b><a style='text-decoration:none;'href='all_products.php'>Products</a></b></td>
                         <td><b><a style='text-decoration:none;' href='updater.php'>Update</a></b></td>
                         <td><b><a style='text-decoration:none;'href='deleter.php'>Delete</a></b></td>
-                        <td><b><a style='text-decoration:none;'href='review.php'>Add review</a></b></td>
+                        
                          </tr>";
                         
                     }

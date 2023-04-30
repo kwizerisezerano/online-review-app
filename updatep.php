@@ -35,9 +35,17 @@ $result = mysqli_query($conn, $sql);
         <form action="" method="post" >
             <div class="form-group">
                 
-                <label for="">productID</label>
-                <select name="productid" id="" class="form-control">
-                    <option value="<?php print $product->productid;?>"><?php print $product->name;?></option>
+                <<label for="">Assign to</label>
+                <select name="assign" id="" class="form-control" required>
+                    <?php
+                $conn=mysqli_connect("localhost","root","","review");
+                if($conn){
+                    $select = mysqli_query($conn,"SELECT * FROM `review` ");
+                    while($row=mysqli_fetch_array($select)){
+                        echo"<option value='".$row['productid']."'>".$row['productid']."</option>";
+                    }
+                }
+                ?>
                 </select>
             </div>
             <div class="form-group">

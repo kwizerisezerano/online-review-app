@@ -61,17 +61,7 @@ else {
         <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
                 <label for="">ProductID</label>
-                <select name="id" id="" class="form-control" required>
-                    <?php
-                $conn=mysqli_connect("localhost","root","","review");
-                if($conn){
-                    $select = mysqli_query($conn,"SELECT * FROM `product`");
-                    while($row=mysqli_fetch_array($select)){
-                        echo"<option value='".$row['productid']."'>".$row['name']."</option>";
-                    }
-                }
-                ?>
-                </select>
+                <input type="number" name="id" id="" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="">Product name</label>
