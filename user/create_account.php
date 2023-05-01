@@ -68,6 +68,7 @@ if($_POST){
     $user=$_POST['username'];
     $status=$_POST['status'];
     $pswd=$_POST['password'];
+    $hash=password_hash($pswd,PASSWORD_DEFAULT);
     $select=mysqli_query($conn,"select*from users where username='$user' and status='$status'");
     if($row=mysqli_fetch_array($select)){
 
@@ -76,7 +77,7 @@ if($_POST){
     }
     else
     {
-        $insert=mysqli_query($conn,"INSERT INTO `users`(`username`, `status`, `password`) VALUES ('$user','$status','$pswd')");
+        $insert=mysqli_query($conn,"INSERT INTO `users`(`username`, `status`, `password`) VALUES ('$user','$status','$hash')");
         if($insert){
             echo"<script>alert('Account is successfully created');</script>";
 
