@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,13 +31,13 @@
    
         <form action="" method="post" >
             <div class="form-group" >
-            <table border="0" width="1000" height="300" bgcolor="white" >
+           <center> <table border="0" width="1200" height="300" bgcolor="white" ></center>
         <tr>
-    <th>Reviewid</th>
-    <th>REviwed By</th>
+    <th >Reviewid</th>
+    <th>REviwed by</th>
     <th>productid</th>
     <th>description</th>
-    <th>Reviewed time </th>
+    <th>time </th>
     <th>User status</th>
     <th>Manage reviews</th>
    </tr>
@@ -49,9 +53,9 @@
                         <td>$row->description</td>
                         <td>$row->time</td>
                         <td>$row->status</td>
-                        <td><b><a style='text-decoration:none;'href='all_products.php'>Products</a></b></td>
-                        <td><b><a style='text-decoration:none;' href='updater.php'>Update</a></b></td>
-                        <td><b><a style='text-decoration:none;'href='deleter.php'>Delete</a></b></td>
+                        <td><b><a style='text-decoration:none;padding-left:0px;'href='all_products.php'><i class='fas fa-shopping-cart' style='color:blue'></i>Available product</a></b></td>
+                        <td><b><a style='text-decoration:none;padding-right:0px;' href='updater.php'><i class='fas fa-edit' style='color:blue'></i>update review</a></b></td>
+                        <td><b><a style='text-decoration:none;padding-right:0px;'href='deleter.php'><i class='fas fa-recycle' style='color:blue'></i>delete review</a></b></td>
                         
                          </tr>";
                         

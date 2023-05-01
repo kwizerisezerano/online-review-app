@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 $conn = mysqli_connect("localhost", "root", "", "review");
 if ($_POST) {
     $pname = $_POST['pname'];
@@ -35,6 +38,7 @@ if ($_POST) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
     <style>
@@ -48,19 +52,23 @@ if ($_POST) {
 </head>
 
 <body class="bg-light  container py-5" style="height:100vh">
-    <!-- header -->
-    <div class="bg-white shadow rounded p-3">
-    <div class="menu" style="background-color:blue;">
-            <b><p style="color:white;"><a href="logout.php"style="text-decoration:none;color:white;padding:65px;">Logout</a> 
-            <a href="update.php"style="text-decoration:none;color:white;padding:65px;" >update</a>
-            <a href="deletep.php"style="text-decoration:none;color:white;padding:65px;" >delete</a>
-            <a href="all_products.php"style="text-decoration:none;color:white;padding:55px;" >available products</a>
-            <a href="seller.php"style="text-decoration:none;color:white;padding:55px;" >add new products</a>
+<div class="menu" style="background-color:blue;">
+            <a href="update.php"style="text-decoration:none;color:white;padding:50px;"><i class='fas fa-edit' style="color:white;"></i>Update  product</a> 
+            <a href="deletep.php"style="text-decoration:none;color:white;padding:50px;"><i class='fas fa-recycle' style="color:white;"></i>Delete product</a> 
+            <a href="seller.php"style="text-decoration:none;color:white;padding:50px;"><i class='fas fa-pen' style="color:white"></i>Add new product</a> 
+            <a href="all_products.php"style="text-decoration:none;color:white;padding:40px;"><i class='fas fa-eye' style="color:white;"></i>Available product</a> 
+            <a href="logout.php"style="text-decoration:none;color:white;padding:50px;"><i class='fas fa-user-minus' style="color:white"></i>Logout</a> 
+            
             <center>
             </p> </b>
 </div>
+    <!-- header -->
+    <div class="bg-white shadow rounded p-3">
+    
     <h1 style="color:blue;font-family:Algerian;"><center>ONLINE REVIEW PLATFORM</center></h1>
         <h4  style="color:darkblue;font-family:helvetica; "><center>Add new products<center></h4>
+       
+        
         <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="">Product name</label>

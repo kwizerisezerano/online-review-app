@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,9 +32,9 @@
             <div class="form-group">
             <i class='fas fa-user' style="color:blue;"></i>
                 <label for="">Username</label>
-                <input type="text" name="username" id="" class="form-control" required>
+                <input type="text" name="username" minlength="3" pattern="[A-Za-z]+" id="" class="form-control" required  >
             </div>
-            <div class="form-group">
+            <div class="form-group"> 
             <i class='fas fa-angle-double-down' style="color:blue;"></i>
                 <label for="">Status </label>
                 <select name="status" class="form-control" required>
@@ -41,7 +45,7 @@
             <div class="form-group" class="form-control">
             <i class='fas fa-key' style="color:blue;"></i>
                 <label for="">Password</label>
-                <input type="password" name="password" id="" class="form-control" required>
+                <input type="password" name="password" minlength="8"id="" class="form-control" required>
             </div>
            
             <div class="form-group mt-2">

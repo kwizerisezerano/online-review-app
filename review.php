@@ -15,6 +15,7 @@ $result = mysqli_query($conn, $sql);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
     <style>
@@ -78,8 +79,8 @@ $result = mysqli_query($conn, $sql);
             </div>
             <div class="form-group mt-2">
                 <p>
-                    <center><b> <a href="comments.php"style="text-decoration:none;">View reviews</a></b> </center> 
-                    <center> <b> <a href="all_products.php"style="text-decoration:none;">View available products</a></b> </center> 
+                    <center><b> <a href="comments.php"style="text-decoration:none;"><i class='fas fa-eye' style="color:blue"></i> view reviews</center> </a></b>
+                    <center><b> <a href="all_products.php"style="text-decoration:none;"><i class='fas fa-shopping-cart' style="color:blue"></i> available product</center> </a></b>
                 </p>
             </div>
 

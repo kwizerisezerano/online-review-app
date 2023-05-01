@@ -27,7 +27,7 @@
    
         <form action="" method="post" >
         <div class="form-group">
-        <label for="">Search specific produc here</label>
+        <label for="">Search specific product here</label>
                 <select name="id" id="" class="form-control" required>
                     <?php
                 $conn=mysqli_connect("localhost","root","","review");

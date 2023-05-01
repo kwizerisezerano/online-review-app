@@ -7,6 +7,7 @@ if ($_POST) {
     $pmarc = $_POST['pmarc'];
     $psize = $_POST['psize'];
     $ptype = $_POST['ptype'];
+    $price = $_POST['price'];
     $select=mysqli_query($conn,"select*from product  where productid='$id'");
     $row=mysqli_fetch_array($select);
 
@@ -18,7 +19,7 @@ if ($_POST) {
 
         if (move_uploaded_file($tmp, $target_dir)) {
             if($row['productid']){
-                $update = mysqli_query($conn, "update product set name='$pname',marc='$pmarc',size='$psize',type='$ptype',image='$pimage'where  productid='$id'");
+                $update = mysqli_query($conn, "update product set name='$pname',marc='$pmarc',size='$psize',type='$ptype',image='$pimage',price='$price'where  productid='$id'");
                 echo "<script>alert('product is successfully updated');</script>";
             }
             else {
@@ -41,6 +42,7 @@ else {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets\css\bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min.css">
     <script src="assets\js\bootstrap.bundle.js"></script>
     <title>Document</title>
     <style>
@@ -54,19 +56,22 @@ else {
 </head>
 
 <body class="bg-light  container py-5" style="height:100vh">
-    <!-- header -->
-    <div class="bg-white shadow rounded p-3">
-    <div class="menu" style="background-color:blue;">
-            <b><p style="color:white;"><a href="logout.php"style="text-decoration:none;color:white;padding:65px;">Logout</a> 
-            <a href="update.php"style="text-decoration:none;color:white;padding:65px;" >update</a>
-            <a href="deletep.php"style="text-decoration:none;color:white;padding:65px;" >delete</a>
-            <a href="all_products.php"style="text-decoration:none;color:white;padding:55px;" >available products</a>
-            <a href="seller.php"style="text-decoration:none;color:white;padding:55px;" >add new products</a>
+<div class="menu" style="background-color:blue;">
+            <a href="update.php"style="text-decoration:none;color:white;padding:50px;"><i class='fas fa-edit' style="color:white;"></i>Update  product</a> 
+            <a href="deletep.php"style="text-decoration:none;color:white;padding:50px;"><i class='fas fa-recycle' style="color:white;"></i>Delete product</a> 
+            <a href="seller.php"style="text-decoration:none;color:white;padding:50px;"><i class='fas fa-pen' style="color:white"></i>Add new product</a> 
+            <a href="all_products.php"style="text-decoration:none;color:white;padding:40px;"><i class='fas fa-eye' style="color:white;"></i>Available product</a> 
+            <a href="logout.php"style="text-decoration:none;color:white;padding:50px;"><i class='fas fa-user-minus' style="color:white"></i>Logout</a> 
+            
             <center>
             </p> </b>
-</div> 
+</div>
+    <!-- header -->
+    <div class="bg-white shadow rounded p-3">
+    
     <h1 style="color:blue;font-family:Algerian;"><center>ONLINE REVIEW PLATFORM</center></h1>
         <h4  style="color:darkblue;font-family:helvetica; "><center>Modify product properties<center></h4>
+        
         <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
         <label for="">ProductID</label>
@@ -102,7 +107,10 @@ else {
                 <label for="">Product image</label>
                 <input type="file" name="pfile" id="" accept="image/*" class="form-control" required>
             </div>
-
+            <div class="form-group">
+                <label for="">Product Price</label>
+                <input type="text" name="price" id="" class="form-control" required placeholder="$followed by amount">
+            </div>
             <div class="form-group mt-2">
                 <button type="submit" class="btn btn-primary w-100">Modify Product</button>
             </div>
