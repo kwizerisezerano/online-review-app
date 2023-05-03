@@ -4,12 +4,14 @@ $conn=mysqli_connect("localhost","root","","review");
 if($_POST){
     $user=$_POST['username'];
     $pswd=$_POST['password'];
-    $select=mysqli_query($conn,"SELECT `status`,`username`,`password` FROM `users` WHERE username='$user' and password='$pswd'");
+    $hash=md5($pswd);
+    $select=mysqli_query($conn,"SELECT `status`,`username`,`password` FROM `users` WHERE username='$user' and password='$hash'");
     if(mysqli_num_rows($select)>0){
        while($row=mysqli_fetch_array($select)){
         $_SESSION["user"]=$row['username'];
         $_SESSION["pswd"]=$row['password'];
-        if($row['status']=="seller"){
+       
+        if($row['status']=="seller" ){
             header("location:seller.php");
         }else{
             header("location:all_products.php");

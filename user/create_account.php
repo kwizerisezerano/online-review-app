@@ -68,7 +68,7 @@ if($_POST){
     $user=$_POST['username'];
     $status=$_POST['status'];
     $pswd=$_POST['password'];
-    $hash=password_hash($pswd,PASSWORD_DEFAULT);
+    $hash=md5($pswd);
     $select=mysqli_query($conn,"select*from users where username='$user' and status='$status'");
     if($row=mysqli_fetch_array($select)){
 
