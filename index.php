@@ -1,30 +1,4 @@
-<?php
-session_start();
-$conn=mysqli_connect("localhost","root","","review");
-if($_POST){
-    $user=$_POST['username'];
-    $pswd=$_POST['password'];
-    $hash=md5($pswd);
-    $select=mysqli_query($conn,"SELECT `status`,`username`,`password` FROM `users` WHERE username='$user' and password='$hash'");
-    if(mysqli_num_rows($select)>0){
-       while($row=mysqli_fetch_array($select)){
-        $_SESSION["user"]=$row['username'];
-        $_SESSION["pswd"]=$row['password'];
-       
-        if($row['status']=="seller" ){
-            header("location:seller.php");
-        }else{
-            header("location:all_products.php");
-        }
-       }
-    } else {
-        echo "<script>alert('incorrect username or password');</script>";
-    }
-    
 
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +27,7 @@ if($_POST){
     <h1 style="color:blue;font-family:Algerian;">ONLINE REVIEW PLATFORM</h1>
         <h4  style="color:darkblue;font-family:helvetica; "><center>Login with valid Credentials<center></h4>
    
-        <form action="" method="post" >
+        <form action="login_valid.php" method="post" >
             <div class="form-group" >
                 <i class='fas fa-user' style="color:blue;"></i>
 
@@ -68,7 +42,7 @@ if($_POST){
                 <input type="password" name="password" class="form-control" required  >
             </div>
             <div class="form-group mt-2">
-                <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+                <button type="submit" name="login" class="btn btn-primary w-100">LOGIN</button>
             </div>
             <div class="form-group mt-2">
                 <p>

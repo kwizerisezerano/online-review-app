@@ -97,7 +97,7 @@ else {
             </div>
             <div class="form-group">
                 <label for="">Product size</label>
-                <input type="number" name="psize" id="" class="form-control" required>
+                <input type="text" name="psize" id="" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="">Product type</label>

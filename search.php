@@ -32,7 +32,7 @@
                     <?php
                 $conn=mysqli_connect("localhost","root","","review");
                 if($conn){
-                    $select = mysqli_query($conn,"SELECT * FROM `product` where seller='$_SESSION[user]'");
+                    $select = mysqli_query($conn,"SELECT * FROM `product`");
                     while($row=mysqli_fetch_array($select)){
                         echo"<option value='".$row['productid']."'>".$row['name']."</option>";
                     }
@@ -57,6 +57,7 @@
     <th>size</th>
     <th>type </th>
     <th>Seller</th>
+    <th>manage</th>
    </tr>
    <?php
                 $conn=mysqli_connect("localhost","root","","review");
