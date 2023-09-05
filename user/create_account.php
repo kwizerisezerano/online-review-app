@@ -32,7 +32,7 @@ session_start();
             <div class="form-group">
             <i class='fas fa-user' style="color:blue;"></i>
                 <label for="">Username</label>
-                <input type="text" name="username" minlength="3" pattern="[A-Za-z]+" id="" class="form-control" required  >
+                <input type="text" name="username" minlength="3" title="invalid or  username can't have three characters" pattern="[A-Za-z]+" id="" class="form-control" required  >
             </div>
             <div class="form-group"> 
             <i class='fas fa-angle-double-down' style="color:blue;"></i>
@@ -45,7 +45,7 @@ session_start();
             <div class="form-group" class="form-control">
             <i class='fas fa-key' style="color:blue;"></i>
                 <label for="">Password</label>
-                <input type="password" name="password" minlength="8"id="" class="form-control" required>
+                <input type="password" name="password" title="password can't be less than eight characters" minlength="8"id="" class="form-control" required>
             </div>
            
             <div class="form-group mt-2">
@@ -72,7 +72,6 @@ if($_POST){
     $select=mysqli_query($conn,"select*from users where username='$user' and status='$status'");
     if($row=mysqli_fetch_array($select)){
         
-
         echo"<script>alert('Account is taken');</script>";
         header("location:../");
         
@@ -82,6 +81,7 @@ if($_POST){
         $insert=mysqli_query($conn,"INSERT INTO `users`(`username`, `status`, `password`) VALUES ('$user','$status','$hash')");
         if($insert){
             echo"<script>alert('Account is successfully created');</script>";
+            header("location:../");
 
         }
         

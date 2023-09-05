@@ -97,9 +97,9 @@ if ($_POST) {
                     <?php
                 $conn=mysqli_connect("localhost","root","","review");
                 if($conn){
-                    $select = mysqli_query($conn,"SELECT * FROM `users` where status='seller' ");
+                    $select = mysqli_query($conn,"SELECT * FROM `users` where status='seller' and username='$_SESSION[user]'");
                     while($row=mysqli_fetch_array($select)){
-                        echo"<option value='".$row['username']."'>".$row['username']."</option>";
+                        echo"<option value='".$_SESSION["user"]."'>".$_SESSION["user"]."</option>";
                     }
                 }
                 ?>

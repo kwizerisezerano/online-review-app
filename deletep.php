@@ -62,6 +62,7 @@ if ($_POST) {
                     $select = mysqli_query($conn,"SELECT * FROM `product` where seller='$_SESSION[user]'");
                     while($row=mysqli_fetch_array($select)){
                         echo"<option value='".$row['productid']."'>".$row['name']."</option>";
+                       
                     }
                 }
                 ?>

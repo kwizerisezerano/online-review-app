@@ -20,9 +20,11 @@ if (isset($_POST['login'])) {
             }
         } else {
             echo "<script>alert('incorrect password');</script>";
+            header("location:index.php");
         }
     } else {
-        echo "<script>alert('incorrect username');</script>";
+       // echo "<script>alert('incorrect username');</script>";
+        header("location:index.php");
     }
 }
 ?>
